@@ -29,57 +29,57 @@ public class nhanvienform extends javax.swing.JFrame {
 //        getConnection();
         hienThiDanhSachNhanVien();
     }
-//    Connection con= null;
-//    Statement st= null;
-//    
-//    public ArrayList<NhanVien> layDanhSachNhanVien() {
-//        ArrayList<NhanVien> dsnv = new ArrayList<NhanVien>();
-//        Connection con = getConnection();
-//        try {
-//            st = (Statement) con.createStatement();
-//            String sql = "SELECT * FROM nhanvien";
-//            // Thưcj thi câu lệnh truy vấn
-//            ResultSet rs = st.executeQuery(sql);
-//
-//            NhanVien nv;
-//            while (rs.next()) {
-//                nv = new NhanVien(rs.getString("MANV"), rs.getString("TENNV"), rs.getString("CHUCVU"), rs.getDouble("LUONGNV"), rs.getDate("NGAYSINH"), rs.getString("GIOITINH"), rs.getString("CHUTHICH") );
-//
-//                //Thêm vào danh sách
-//                dsnv.add(nv);
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//
-//        }
-//        return dsnv;
-//    }
+   Connection con= null;
+   Statement st= null;
+   
+   public ArrayList<NhanVien> layDanhSachNhanVien() {
+       ArrayList<NhanVien> dsnv = new ArrayList<NhanVien>();
+       Connection con = getConnection();
+       try {
+           st = (Statement) con.createStatement();
+           String sql = "SELECT * FROM nhanvien";
+           // Thưcj thi câu lệnh truy vấn
+           ResultSet rs = st.executeQuery(sql);
+
+           NhanVien nv;
+           while (rs.next()) {
+               nv = new NhanVien(rs.getString("MANV"), rs.getString("TENNV"), rs.getString("CHUCVU"), rs.getDouble("LUONGNV"), rs.getDate("NGAYSINH"), rs.getString("GIOITINH"), rs.getString("CHUTHICH") );
+
+               //Thêm vào danh sách
+               dsnv.add(nv);
+           }
+       } catch (Exception ex) {
+           ex.printStackTrace();
+
+       }
+       return dsnv;
+   }
     
     public void hienThiDanhSachNhanVien() {
         String colTieuDe1[] = new String[]{"Mã Nhân Viên", "Tên Nhân Viên", "Chức Vụ", "Lương", "Ngày Sinh", "Giới Tính", "Chú Thích"};
-//        ArrayList<NhanVien> dsnv = layDanhSachNhanVien();
+       ArrayList<NhanVien> dsnv = layDanhSachNhanVien();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
-//        Object[] row;
-//
-//        for (int i = 0; i < dsnv.size(); i++) {
-//
-//            row = new Object[7];
-//
-//            // GÁN GIÁ TRỊ
-//            row[0] = dsnv.get(i).getMANV();
-//            row[1] = dsnv.get(i).getTENNV();
-//            row[2] = dsnv.get(i).getCHUCVU();
-//            row[3] = dsnv.get(i).getLUONGNV();
-//            row[4] = dsnv.get(i).getNGAYSINH();
-//            row[5] = dsnv.get(i).getGIOITINH();
-//            row[6] = dsnv.get(i).getCHUTHICH();
-//
-//            model.addRow(row);
-//        }
+       Object[] row;
+
+       for (int i = 0; i < dsnv.size(); i++) {
+
+           row = new Object[7];
+
+           // GÁN GIÁ TRỊ
+           row[0] = dsnv.get(i).getMANV();
+           row[1] = dsnv.get(i).getTENNV();
+           row[2] = dsnv.get(i).getCHUCVU();
+           row[3] = dsnv.get(i).getLUONGNV();
+           row[4] = dsnv.get(i).getNGAYSINH();
+           row[5] = dsnv.get(i).getGIOITINH();
+           row[6] = dsnv.get(i).getCHUTHICH();
+
+           model.addRow(row);
+       }
         
-        //    }catch(ArrayIndexOutOfBoundsException ex){
+           }catch(ArrayIndexOutOfBoundsException ex){
 
         jTableNhanvien.setModel(model);
 
@@ -419,57 +419,57 @@ public class nhanvienform extends javax.swing.JFrame {
 
     private void xoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "DELETE FROM NhanVien WHERE MANV = '" + jTextFieldMANV.getText() + "'";
-//            st.executeUpdate(query);
-//            hienThiDanhSachNhanVien();
-//
-//        } catch (Exception ex) {
-//
-//            ex.printStackTrace();
-//        }
+       Connection con = getConnection();
+       try {
+           // Tạo một đối tượng để thực hiện công việc
+           st = (Statement) con.createStatement();
+           String query = "DELETE FROM NhanVien WHERE MANV = '" + jTextFieldMANV.getText() + "'";
+           st.executeUpdate(query);
+           hienThiDanhSachNhanVien();
+
+       } catch (Exception ex) {
+
+           ex.printStackTrace();
+       }
     }//GEN-LAST:event_xoaActionPerformed
 
     private void suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaActionPerformed
         // TODO add your handling code here:
 
-//        if (jTableNhanvien.getSelectedRow()==-1) {
-//            if (jTableNhanvien.getRowCount()==0) {
-//                // lblError.setText("Table is empty");
-//            }
-//            else{
-//                //  lblError.setText("You must select a Tennis Player");
-//            }
-//        }
-//        else{
-//            DefaultTableModel model = (DefaultTableModel) jTableNhanvien.getModel();
-//            model.setValueAt(jTextFieldMANV.getText(), jTableNhanvien.getSelectedRow(), 0);
-//            model.setValueAt(jTextFieldTENNV.getText().toString(), jTableNhanvien.getSelectedRow(), 1);
-//            model.setValueAt(jTextFieldCHUCVU.getText(), jTableNhanvien.getSelectedRow(), 2);
-//            model.setValueAt(jTextFieldLUONG.getText(), jTableNhanvien.getSelectedRow(), 2);
-//            model.setValueAt(jTextFieldNGAYSINH.getText(), jTableNhanvien.getSelectedRow(), 2);
-//            model.setValueAt(jTextFieldGIOITINH.getText(), jTableNhanvien.getSelectedRow(), 2);
-//            model.setValueAt(jTextFieldCHUTHICH.getText(), jTableNhanvien.getSelectedRow(), 2);
-//        }
+       if (jTableNhanvien.getSelectedRow()==-1) {
+           if (jTableNhanvien.getRowCount()==0) {
+               // lblError.setText("Table is empty");
+           }
+           else{
+               //  lblError.setText("You must select a Tennis Player");
+           }
+       }
+       else{
+           DefaultTableModel model = (DefaultTableModel) jTableNhanvien.getModel();
+           model.setValueAt(jTextFieldMANV.getText(), jTableNhanvien.getSelectedRow(), 0);
+           model.setValueAt(jTextFieldTENNV.getText().toString(), jTableNhanvien.getSelectedRow(), 1);
+           model.setValueAt(jTextFieldCHUCVU.getText(), jTableNhanvien.getSelectedRow(), 2);
+           model.setValueAt(jTextFieldLUONG.getText(), jTableNhanvien.getSelectedRow(), 2);
+           model.setValueAt(jTextFieldNGAYSINH.getText(), jTableNhanvien.getSelectedRow(), 2);
+           model.setValueAt(jTextFieldGIOITINH.getText(), jTableNhanvien.getSelectedRow(), 2);
+           model.setValueAt(jTextFieldCHUTHICH.getText(), jTableNhanvien.getSelectedRow(), 2);
+       }
     }//GEN-LAST:event_suaActionPerformed
 
     private void themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "INSERT INTO NhanVien(MANV,TENNV,CHUCVU, LUONGNV, NGAYSINH, GIOITINH, CHUTHICH) VALUES('" + jTextFieldMANV.getText() + "',"
-//            + "'" + jTextFieldTENNV.getText() + "','" + jTextFieldCHUCVU.getText() + "','" + jTextFieldLUONG.getText() + "','" + jTextFieldNGAYSINH.getText() + "','" + jTextFieldGIOITINH.getText() + "','" + jTextFieldCHUTHICH.getText() + "')";
-//
-//            st.execute(query);
-//            hienThiDanhSachNhanVien();
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
+       Connection con = getConnection();
+       try {
+           // Tạo một đối tượng để thực hiện công việc
+           st = (Statement) con.createStatement();
+           String query = "INSERT INTO NhanVien(MANV,TENNV,CHUCVU, LUONGNV, NGAYSINH, GIOITINH, CHUTHICH) VALUES('" + jTextFieldMANV.getText() + "',"
+           + "'" + jTextFieldTENNV.getText() + "','" + jTextFieldCHUCVU.getText() + "','" + jTextFieldLUONG.getText() + "','" + jTextFieldNGAYSINH.getText() + "','" + jTextFieldGIOITINH.getText() + "','" + jTextFieldCHUTHICH.getText() + "')";
+
+           st.execute(query);
+           hienThiDanhSachNhanVien();
+
+       } catch (Exception ex) {
+           ex.printStackTrace();
 //        }
     }//GEN-LAST:event_themActionPerformed
 
