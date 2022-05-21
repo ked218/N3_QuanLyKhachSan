@@ -26,60 +26,60 @@ public class khachhangform extends javax.swing.JFrame {
      */
     public khachhangform() {
         initComponents();
-//        getConnection();
+        getConnection();
         hienThiDanhSachKhachHang();
     }
-//    Connection con=null;
-//    Statement st=null;
-//    
-//     public ArrayList<KhachHang> layDanhSachKhachHang() {
-//        ArrayList<KhachHang> dskh = new ArrayList<KhachHang>();
-//        Connection con = getConnection();
-//        try {
-//            st = (Statement) con.createStatement();
-//            String sql = "SELECT * FROM khachhang";
-//            // Thưcj thi câu lệnh truy vấn
-//            ResultSet rs = st.executeQuery(sql);
-//
-//            KhachHang kh;
-//            while (rs.next()) {
-//                kh = new KhachHang(rs.getString("MAKH"), rs.getString("TENKH"), rs.getString("CMND"), rs.getString("QUOCTICH"), rs.getString("GIOITINH"), rs.getInt("TUOI"), rs.getString("SDT"), rs.getString("MAPHONG") );
-//
-//                //Thêm vào danh sách
-//                dskh.add(kh);
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//
-//        }
-//        return dskh;
-//    }
+    Connection con=null;
+    Statement st=null;
+    
+     public ArrayList<KhachHang> layDanhSachKhachHang() {
+        ArrayList<KhachHang> dskh = new ArrayList<KhachHang>();
+        Connection con = getConnection();
+        try {
+            st = (Statement) con.createStatement();
+            String sql = "SELECT * FROM khachhang";
+            // Thưcj thi câu lệnh truy vấn
+            ResultSet rs = st.executeQuery(sql);
+
+            KhachHang kh;
+            while (rs.next()) {
+                kh = new KhachHang(rs.getString("MAKH"), rs.getString("TENKH"), rs.getString("CMND"), rs.getString("QUOCTICH"), rs.getString("GIOITINH"), rs.getInt("TUOI"), rs.getString("SDT"), rs.getString("MAPHONG") );
+
+                //Thêm vào danh sách
+                dskh.add(kh);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+        return dskh;
+    }
      public void hienThiDanhSachKhachHang() {
         String colTieuDe1[] = new String[]{"Mã Khách Hàng", "Tên Khách Hàng", "Chứng Minh Nhân Dân", "Quốc Tịch", "Giới Tính", "Tuổi", "Số Điện Thoại", "Mã Phòng"};
-//        ArrayList<KhachHang> dskh = layDanhSachKhachHang();
+        ArrayList<KhachHang> dskh = layDanhSachKhachHang();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
-//        Object[] row;
-//
-//        for (int i = 0; i < dskh.size(); i++) {
-//
-//            row = new Object[8];
-//
-//            // GÁN GIÁ TRỊ
-//            row[0] = dskh.get(i).getMAKH();
-//            row[1] = dskh.get(i).getTENKH();
-//            row[2] = dskh.get(i).getCMND();
-//            row[3] = dskh.get(i).getQUOCTICH();
-//            row[4] = dskh.get(i).getGIOITINH();
-//            row[5] = dskh.get(i).getTuoi();
-//            row[6] = dskh.get(i).getSDT();
-//            row[7] = dskh.get(i).getMAPHONG();
-//
-//            model.addRow(row);
-//        }
+        Object[] row;
+
+        for (int i = 0; i < dskh.size(); i++) {
+
+            row = new Object[8];
+
+            // GÁN GIÁ TRỊ
+            row[0] = dskh.get(i).getMAKH();
+            row[1] = dskh.get(i).getTENKH();
+            row[2] = dskh.get(i).getCMND();
+            row[3] = dskh.get(i).getQUOCTICH();
+            row[4] = dskh.get(i).getGIOITINH();
+            row[5] = dskh.get(i).getTuoi();
+            row[6] = dskh.get(i).getSDT();
+            row[7] = dskh.get(i).getMAPHONG();
+
+            model.addRow(row);
+        }
         
-        //    }catch(ArrayIndexOutOfBoundsException ex){
+    }catch(ArrayIndexOutOfBoundsException ex){
 
         jTableKhachhang.setModel(model);
 
@@ -393,59 +393,59 @@ public class khachhangform extends javax.swing.JFrame {
 
     private void them1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them1ActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "INSERT INTO khachhang(MAKH,TENKH, CMND, QUOCTICH, GIOITINH, TUOI, SDT, MAPHONG) VALUES('" + jTextFieldMAKH.getText() + "',"
-//            + "'" + jTextFieldTENKH.getText() + "','" + jTextFieldCMND.getText() + "', '" + jTextFieldQUOCTICH.getText() + "', '" + jTextFieldGIOITINHKH.getText() + "', '" + jTextFieldTUOI.getText() + "', '" + jTextFieldSDT.getText() + "', '" + jTextFieldMAPHONGKH.getText() + "')";
-//
-//            st.execute(query);
-//            hienThiDanhSachKhachHang();
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query = "INSERT INTO khachhang(MAKH,TENKH, CMND, QUOCTICH, GIOITINH, TUOI, SDT, MAPHONG) VALUES('" + jTextFieldMAKH.getText() + "',"
+            + "'" + jTextFieldTENKH.getText() + "','" + jTextFieldCMND.getText() + "', '" + jTextFieldQUOCTICH.getText() + "', '" + jTextFieldGIOITINHKH.getText() + "', '" + jTextFieldTUOI.getText() + "', '" + jTextFieldSDT.getText() + "', '" + jTextFieldMAPHONGKH.getText() + "')";
+
+            st.execute(query);
+            hienThiDanhSachKhachHang();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
     }//GEN-LAST:event_them1ActionPerformed
 
     private void sua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sua1ActionPerformed
         // TODO add your handling code here:
-//        if (jTableKhachhang.getSelectedRow()==-1) {
-//            if (jTableKhachhang.getRowCount()==0) {
-//                // lblError.setText("Table is empty");
-//            }
-//            else{
-//                //  lblError.setText("You must select a Tennis Player");
-//            }
-//        }
-//        else{
-//            DefaultTableModel model = (DefaultTableModel) jTableKhachhang.getModel();
-//            model.setValueAt(jTextFieldMAKH.getText(), jTableKhachhang.getSelectedRow(), 0);
-//            model.setValueAt(jTextFieldTENKH.getText().toString(), jTableKhachhang.getSelectedRow(), 1);
-//            model.setValueAt(jTextFieldCMND.getText(), jTableKhachhang.getSelectedRow(), 2);
-//            model.setValueAt(jTextFieldQUOCTICH.getText(), jTableKhachhang.getSelectedRow(), 3);
-//            model.setValueAt(jTextFieldGIOITINHKH.getText(), jTableKhachhang.getSelectedRow(), 4);
-//            model.setValueAt(jTextFieldTUOI.getText(), jTableKhachhang.getSelectedRow(), 5);
-//            model.setValueAt(jTextFieldSDT.getText(), jTableKhachhang.getSelectedRow(), 6);
-//            model.setValueAt(jTextFieldMAPHONGKH.getText(), jTableKhachhang.getSelectedRow(), 7);
-//        }
+        if (jTableKhachhang.getSelectedRow()==-1) {
+            if (jTableKhachhang.getRowCount()==0) {
+                // lblError.setText("Table is empty");
+            }
+            else{
+                //  lblError.setText("You must select a Tennis Player");
+            }
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) jTableKhachhang.getModel();
+            model.setValueAt(jTextFieldMAKH.getText(), jTableKhachhang.getSelectedRow(), 0);
+            model.setValueAt(jTextFieldTENKH.getText().toString(), jTableKhachhang.getSelectedRow(), 1);
+            model.setValueAt(jTextFieldCMND.getText(), jTableKhachhang.getSelectedRow(), 2);
+            model.setValueAt(jTextFieldQUOCTICH.getText(), jTableKhachhang.getSelectedRow(), 3);
+            model.setValueAt(jTextFieldGIOITINHKH.getText(), jTableKhachhang.getSelectedRow(), 4);
+            model.setValueAt(jTextFieldTUOI.getText(), jTableKhachhang.getSelectedRow(), 5);
+            model.setValueAt(jTextFieldSDT.getText(), jTableKhachhang.getSelectedRow(), 6);
+            model.setValueAt(jTextFieldMAPHONGKH.getText(), jTableKhachhang.getSelectedRow(), 7);
+        }
     }//GEN-LAST:event_sua1ActionPerformed
 
     private void xoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoa1ActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "DELETE FROM khachhang WHERE MAKH = '" + jTextFieldMAKH.getText() + "'";
-//            st.executeUpdate(query);
-//            hienThiDanhSachKhachHang();
-//
-//        } catch (Exception ex) {
-//
-//            ex.printStackTrace();
-//        }
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query = "DELETE FROM khachhang WHERE MAKH = '" + jTextFieldMAKH.getText() + "'";
+            st.executeUpdate(query);
+            hienThiDanhSachKhachHang();
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_xoa1ActionPerformed
 
     private void thoat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thoat1ActionPerformed
