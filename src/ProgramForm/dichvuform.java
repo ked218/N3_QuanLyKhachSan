@@ -16,7 +16,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author quang
+ * @author khang
  */
 
 
@@ -27,55 +27,55 @@ public class dichvuform extends javax.swing.JFrame {
      */
     public dichvuform() {
         initComponents();
-//        getConnection();
+        getConnection();
         hienThiDanhSachDichVu();
     }
     Connection con= null;
     Statement st= null;
     
-//        public ArrayList<DichVu> layDanhSachDichVu() {
-//        ArrayList<DichVu> dsdv = new ArrayList<DichVu>();
-//        Connection con = getConnection();
-//        try {
-//            st = (Statement) con.createStatement();
-//            String sql = "SELECT * FROM dichvu";
-//            // Thưcj thi câu lệnh truy vấn
-//            ResultSet rs = st.executeQuery(sql);
-//
-//            DichVu dv;
-//            while (rs.next()) {
-//                dv = new DichVu(rs.getString("MADV"), rs.getString("TENDV"), rs.getDouble("GIADV") );
-//
-//                //Thêm vào danh sách
-//                dsdv.add(dv);
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//
-//        }
-//        return dsdv;
-//    }
+        public ArrayList<DichVu> layDanhSachDichVu() {
+        ArrayList<DichVu> dsdv = new ArrayList<DichVu>();
+        Connection con = getConnection();
+        try {
+            st = (Statement) con.createStatement();
+            String sql = "SELECT * FROM dichvu";
+            // Thưcj thi câu lệnh truy vấn
+            ResultSet rs = st.executeQuery(sql);
+
+            DichVu dv;
+            while (rs.next()) {
+                dv = new DichVu(rs.getString("MADV"), rs.getString("TENDV"), rs.getDouble("GIADV") );
+
+                //Thêm vào danh sách
+                dsdv.add(dv);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+        return dsdv;
+    }
     public void hienThiDanhSachDichVu() {
         String colTieuDe1[] = new String[]{"Mã Dịch Vụ", "Tên Dịch Vụ", "Giá Dịch Vụ"};
         //ArrayList<DichVu> dsdv = layDanhSachDichVu();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
-//        Object[] row;
-//
-//        for (int i = 0; i < dsdv.size(); i++) {
-//
-//            row = new Object[3];
-//
-//            // GÁN GIÁ TRỊ
-//            row[0] = dsdv.get(i).getMADV();
-//            row[1] = dsdv.get(i).getTENNVL();
-//            row[2] = dsdv.get(i).getGIADV();
-//
-//            model.addRow(row);
-//        }
+        Object[] row;
+
+        for (int i = 0; i < dsdv.size(); i++) {
+
+            row = new Object[3];
+
+            // GÁN GIÁ TRỊ
+            row[0] = dsdv.get(i).getMADV();
+            row[1] = dsdv.get(i).getTENNVL();
+            row[2] = dsdv.get(i).getGIADV();
+
+            model.addRow(row);
+        }
         
-        //    }catch(ArrayIndexOutOfBoundsException ex){
+            }catch(ArrayIndexOutOfBoundsException ex){
 
         jTableDichvu.setModel(model);
 
@@ -306,54 +306,54 @@ public class dichvuform extends javax.swing.JFrame {
 
     private void them2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them2ActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "INSERT INTO DichVu(MADV,TENDV, GIADV) VALUES('" + jTextFieldMADV.getText() + "',"
-//            + "'" + jTextFieldTENDV.getText() + "','" + jTextFieldGIADV.getText() + "')";
-//
-//            st.execute(query);
-//            hienThiDanhSachDichVu();
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query = "INSERT INTO DichVu(MADV,TENDV, GIADV) VALUES('" + jTextFieldMADV.getText() + "',"
+            + "'" + jTextFieldTENDV.getText() + "','" + jTextFieldGIADV.getText() + "')";
+
+            st.execute(query);
+            hienThiDanhSachDichVu();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_them2ActionPerformed
 
     private void sua2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sua2ActionPerformed
         // TODO add your handling code here:
-//        if (jTableDichvu.getSelectedRow()==-1) {
-//            if (jTableDichvu.getRowCount()==0) {
-//                // lblError.setText("Table is empty");
-//            }
-//            else{
-//                //  lblError.setText("You must select a Tennis Player");
-//            }
-//        }
-//        else{
-//            DefaultTableModel model = (DefaultTableModel) jTableDichvu.getModel();
-//            model.setValueAt(jTextFieldMADV.getText(), jTableDichvu.getSelectedRow(), 0);
-//            model.setValueAt(jTextFieldTENDV.getText().toString(), jTableDichvu.getSelectedRow(), 1);
-//            model.setValueAt(jTextFieldGIADV.getText(), jTableDichvu.getSelectedRow(), 2);
-//        }
+        if (jTableDichvu.getSelectedRow()==-1) {
+            if (jTableDichvu.getRowCount()==0) {
+                // lblError.setText("Table is empty");
+            }
+            else{
+                //  lblError.setText("You must select a Tennis Player");
+            }
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) jTableDichvu.getModel();
+            model.setValueAt(jTextFieldMADV.getText(), jTableDichvu.getSelectedRow(), 0);
+            model.setValueAt(jTextFieldTENDV.getText().toString(), jTableDichvu.getSelectedRow(), 1);
+            model.setValueAt(jTextFieldGIADV.getText(), jTableDichvu.getSelectedRow(), 2);
+        }
 
     }//GEN-LAST:event_sua2ActionPerformed
 
     private void xoa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoa2ActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "DELETE FROM dichvu WHERE MADV = '" + jTextFieldMADV.getText() + "'";
-//            st.executeUpdate(query);
-//            hienThiDanhSachDichVu();
-//
-//        } catch (Exception ex) {
-//
-//            ex.printStackTrace();
-//        }
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query = "DELETE FROM dichvu WHERE MADV = '" + jTextFieldMADV.getText() + "'";
+            st.executeUpdate(query);
+            hienThiDanhSachDichVu();
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_xoa2ActionPerformed
 
     private void thoat2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thoat2ActionPerformed
