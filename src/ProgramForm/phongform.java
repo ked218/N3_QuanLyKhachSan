@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-import static ProgramConnect.MyConnection.getConnection;
+import static ProgramConnect.MySQLConnection.getConnection;
 import ProgramConnect.Phong;
 
 
@@ -28,6 +28,8 @@ public class phongform extends javax.swing.JFrame {
     public phongform() {
         initComponents();
         getConnection();
+        setLocationRelativeTo(null);
+        setTitle("Quản lý phòng");
         hienThiDanhSachPhong();
     }
        Connection con=null;
@@ -79,9 +81,7 @@ public class phongform extends javax.swing.JFrame {
 
             model.addRow(row);
         }
-        
-        }catch(ArrayIndexOutOfBoundsException ex){
-
+      
         jTablePHONG.setModel(model);
 
     }

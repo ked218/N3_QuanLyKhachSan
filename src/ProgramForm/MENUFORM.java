@@ -23,6 +23,8 @@ public class MENUFORM extends javax.swing.JFrame {
      */
     public MENUFORM() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Menu quản trị");
     }
 
     /**

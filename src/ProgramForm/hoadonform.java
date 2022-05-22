@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-//import ProgramConnect.HoaDon;
-//import static ProgramConnect.MyConnection.getConnection;
+import ProgramConnect.HoaDon;
+import static ProgramConnect.MySQLConnection.getConnection;
 /**
  *
  * @author quang
@@ -24,58 +24,58 @@ public class hoadonform extends javax.swing.JFrame {
      */
     public hoadonform() {
         initComponents();
-//        getConnection();
+        getConnection();
+        setLocationRelativeTo(null);
+        setTitle("Quản lý hóa đơn");
         hienThiDanhSachHoaDon();
     }
     
-//    Connection con=null;
-//    Statement st=null;
+    Connection con=null;
+    Statement st=null;
     
-//    public ArrayList<HoaDon> layDanhSachHoaDon() {
-//        ArrayList<HoaDon> dshd = new ArrayList<HoaDon>();
-//        Connection con = getConnection();
-//        try {
-//            st = (Statement) con.createStatement();
-//            String sql = "SELECT * FROM hoadon";
-//            // Thưcj thi câu lệnh truy vấn
-//            ResultSet rs = st.executeQuery(sql);
-//
-//            HoaDon hd;
-//            while (rs.next()) {
-//                hd = new HoaDon(rs.getString("MAHD"), rs.getString("MANV"), rs.getString("MAPHONG"), rs.getDate("NGAY"), rs.getDouble("GIAHD") );
-//
-//                //Thêm vào danh sách
-//                dshd.add(hd);
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//
-//        }
-//        return dshd;
-//    }
+    public ArrayList<HoaDon> layDanhSachHoaDon() {
+        ArrayList<HoaDon> dshd = new ArrayList<HoaDon>();
+        Connection con = getConnection();
+        try {
+            st = (Statement) con.createStatement();
+            String sql = "SELECT * FROM hoadon";
+            // Thưcj thi câu lệnh truy vấn
+            ResultSet rs = st.executeQuery(sql);
+
+            HoaDon hd;
+            while (rs.next()) {
+                hd = new HoaDon(rs.getString("MAHD"), rs.getString("MANV"), rs.getString("MAPHONG"), rs.getDate("NGAY"), rs.getDouble("GIAHD") );
+
+                //Thêm vào danh sách
+                dshd.add(hd);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+        return dshd;
+    }
      public void hienThiDanhSachHoaDon() {
         String colTieuDe1[] = new String[]{"Mã Hóa Đơn", "Mã Nhân Viên", "Mã Phòng", "Ngày", "Giá Hóa Đơn"};
-        //ArrayList<HoaDon> dshd = layDanhSachHoaDon();
+        ArrayList<HoaDon> dshd = layDanhSachHoaDon();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
-//        Object[] row;
-//
-//        for (int i = 0; i < dshd.size(); i++) {
-//
-//            row = new Object[5];
-//
-//            // GÁN GIÁ TRỊ
-//            row[0] = dshd.get(i).getMAHD();
-//            row[1] = dshd.get(i).getMANV();
-//            row[2] = dshd.get(i).getMAPHONG();
-//            row[3] = dshd.get(i).getNGAY();
-//            row[4] = dshd.get(i).getGIAHD();
-//
-//            model.addRow(row);
-//        }
-        
-        //    }catch(ArrayIndexOutOfBoundsException ex){
+        Object[] row;
+
+        for (int i = 0; i < dshd.size(); i++) {
+
+            row = new Object[5];
+
+            // GÁN GIÁ TRỊ
+            row[0] = dshd.get(i).getMAHD();
+            row[1] = dshd.get(i).getMANV();
+            row[2] = dshd.get(i).getMAPHONG();
+            row[3] = dshd.get(i).getNGAY();
+            row[4] = dshd.get(i).getGIAHD();
+
+            model.addRow(row);
+        }        
 
         jTableHOADON.setModel(model);
 
@@ -378,18 +378,18 @@ public class hoadonform extends javax.swing.JFrame {
 
     private void xoa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoa4ActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "DELETE FROM hoadon WHERE MAHD = '" + jTextFieldMAHD.getText() + "'";
-//            st.executeUpdate(query);
-//            hienThiDanhSachHoaDon();
-//
-//        } catch (Exception ex) {
-//
-//            ex.printStackTrace();
-//        }
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query = "DELETE FROM hoadon WHERE MAHD = '" + jTextFieldMAHD.getText() + "'";
+            st.executeUpdate(query);
+            hienThiDanhSachHoaDon();
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_xoa4ActionPerformed
 
     private void thoat4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thoat4ActionPerformed
@@ -415,39 +415,39 @@ public class hoadonform extends javax.swing.JFrame {
 
     private void sua4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sua4ActionPerformed
         // TODO add your handling code here:
-//        if (jTableHOADON.getSelectedRow()==-1) {
-//            if (jTableHOADON.getRowCount()==0) {
-//                // lblError.setText("Table is empty");
-//            }
-//            else{
-//                //  lblError.setText("You must select a Tennis Player");
-//            }
-//        }
-//        else{
-//            DefaultTableModel model = (DefaultTableModel) jTableHOADON.getModel();
-//            model.setValueAt(jTextFieldMAHD.getText(), jTableHOADON.getSelectedRow(), 0);
-//            model.setValueAt(jTextFieldMANVHD.getText().toString(), jTableHOADON.getSelectedRow(), 1);
-//            model.setValueAt(jTextFieldMAPHONGHD.getText(), jTableHOADON.getSelectedRow(), 2);
-//            model.setValueAt(jTextFieldNGAY.getText(), jTableHOADON.getSelectedRow(), 3);
-//            model.setValueAt(jTextFieldGIAHD.getText(), jTableHOADON.getSelectedRow(), 4);
-//        }
+        if (jTableHOADON.getSelectedRow()==-1) {
+            if (jTableHOADON.getRowCount()==0) {
+                // lblError.setText("Table is empty");
+            }
+            else{
+                //  lblError.setText("You must select a Tennis Player");
+            }
+        }
+        else{
+            DefaultTableModel model = (DefaultTableModel) jTableHOADON.getModel();
+            model.setValueAt(jTextFieldMAHD.getText(), jTableHOADON.getSelectedRow(), 0);
+            model.setValueAt(jTextFieldMANVHD.getText().toString(), jTableHOADON.getSelectedRow(), 1);
+            model.setValueAt(jTextFieldMAPHONGHD.getText(), jTableHOADON.getSelectedRow(), 2);
+            model.setValueAt(jTextFieldNGAY.getText(), jTableHOADON.getSelectedRow(), 3);
+            model.setValueAt(jTextFieldGIAHD.getText(), jTableHOADON.getSelectedRow(), 4);
+        }
     }//GEN-LAST:event_sua4ActionPerformed
 
     private void them4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them4ActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "INSERT INTO hoadon(MAHD,MANV, MAPHONG, NGAY, GIAHD) VALUES('" + jTextFieldMAHD.getText() + "',"
-//            + "'" + jTextFieldMANVHD.getText() + "','" + jTextFieldMAPHONGHD.getText() + "', '" + jTextFieldNGAY.getText() + "', '" + jTextFieldGIAHD.getText() + "')";
-//
-//            st.execute(query);
-//            hienThiDanhSachHoaDon();
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query = "INSERT INTO hoadon(MAHD,MANV, MAPHONG, NGAY, GIAHD) VALUES('" + jTextFieldMAHD.getText() + "',"
+            + "'" + jTextFieldMANVHD.getText() + "','" + jTextFieldMAPHONGHD.getText() + "', '" + jTextFieldNGAY.getText() + "', '" + jTextFieldGIAHD.getText() + "')";
+
+            st.execute(query);
+            hienThiDanhSachHoaDon();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_them4ActionPerformed
 
     /**
