@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-//import ProgramConnect.DichVu;
-//import static ProgramConnect.MyConnection.getConnection;
+import ProgramConnect.DichVu;
+import static ProgramConnect.MySQLConnection.getConnection;
 
 /**
  *
@@ -28,6 +28,8 @@ public class dichvuform extends javax.swing.JFrame {
     public dichvuform() {
         initComponents();
         getConnection();
+        setLocationRelativeTo(null);
+        setTitle("Quản lý dịch vụ");
         hienThiDanhSachDichVu();
     }
     Connection con= null;
@@ -57,7 +59,7 @@ public class dichvuform extends javax.swing.JFrame {
     }
     public void hienThiDanhSachDichVu() {
         String colTieuDe1[] = new String[]{"Mã Dịch Vụ", "Tên Dịch Vụ", "Giá Dịch Vụ"};
-        //ArrayList<DichVu> dsdv = layDanhSachDichVu();
+        ArrayList<DichVu> dsdv = layDanhSachDichVu();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
@@ -73,10 +75,7 @@ public class dichvuform extends javax.swing.JFrame {
             row[2] = dsdv.get(i).getGIADV();
 
             model.addRow(row);
-        }
-        
-            }catch(ArrayIndexOutOfBoundsException ex){
-
+        }        
         jTableDichvu.setModel(model);
 
     }

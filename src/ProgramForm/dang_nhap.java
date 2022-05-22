@@ -18,6 +18,8 @@ public class dang_nhap extends javax.swing.JFrame {
      */
     public dang_nhap() {
         initComponents();
+        setLocationRelativeTo(null);
+        setTitle("Đăng nhập");
     }
 
     /**

@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-//import static ProgramConnect.MyConnection.getConnection;
-//import ProgramConnect.NhanVien;
+import static ProgramConnect.MySQLConnection.getConnection;
+import ProgramConnect.NhanVien;
 
 /**
  *
@@ -26,7 +26,9 @@ public class nhanvienform extends javax.swing.JFrame {
      */
     public nhanvienform() {
         initComponents();
-//        getConnection();
+        getConnection();
+        setLocationRelativeTo(null);
+        setTitle("Quản lý nhân viên");
         hienThiDanhSachNhanVien();
     }
    Connection con= null;
@@ -77,9 +79,7 @@ public class nhanvienform extends javax.swing.JFrame {
            row[6] = dsnv.get(i).getCHUTHICH();
 
            model.addRow(row);
-       }
-        
-           }catch(ArrayIndexOutOfBoundsException ex){
+       }        
 
         jTableNhanvien.setModel(model);
 
@@ -470,7 +470,7 @@ public class nhanvienform extends javax.swing.JFrame {
 
        } catch (Exception ex) {
            ex.printStackTrace();
-//        }
+        }
     }//GEN-LAST:event_themActionPerformed
 
     private void jTextFieldLUONGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLUONGActionPerformed
