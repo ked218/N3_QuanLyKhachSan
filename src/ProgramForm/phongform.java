@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-//import static ProgramConnect.MyConnection.getConnection;
-//import ProgramConnect.Phong;
+import static ProgramConnect.MyConnection.getConnection;
+import ProgramConnect.Phong;
 
 
 /**
@@ -27,60 +27,60 @@ public class phongform extends javax.swing.JFrame {
      */
     public phongform() {
         initComponents();
-//        getConnection();
+        getConnection();
         hienThiDanhSachPhong();
     }
-//    Connection con=null;
-//    Statement st=null;
-//    
-//    public ArrayList<Phong> layDanhSachPhong() {
-//        ArrayList<Phong> dsp = new ArrayList<Phong>();
-//        Connection con = getConnection();
-//        try {
-//            st = (Statement) con.createStatement();
-//            String sql = "SELECT * FROM phong";
-//            // Thưcj thi câu lệnh truy vấn
-//            ResultSet rs = st.executeQuery(sql);
-//
-//            Phong p;
-//            while (rs.next()) {
-//                p = new Phong(rs.getString("MAPHONG"), rs.getString("TENPHONG"), rs.getString("LOAIPHONG"), rs.getDouble("GIAPHONG"), rs.getString("CHUTHICH"), rs.getString("TINHTRANG"), rs.getString("MANV"), rs.getString("MADV") );
-//
-//                //Thêm vào danh sách
-//                dsp.add(p);
-//            }
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//
-//        }
-//        return dsp;
-//    }
+       Connection con=null;
+       Statement st=null;
+    
+    public ArrayList<Phong> layDanhSachPhong() {
+        ArrayList<Phong> dsp = new ArrayList<Phong>();
+        Connection con = getConnection();
+        try {
+            st = (Statement) con.createStatement();
+            String sql = "SELECT * FROM phong";
+            // Thưcj thi câu lệnh truy vấn
+            ResultSet rs = st.executeQuery(sql);
+
+            Phong p;
+            while (rs.next()) {
+                p = new Phong(rs.getString("MAPHONG"), rs.getString("TENPHONG"), rs.getString("LOAIPHONG"), rs.getDouble("GIAPHONG"), rs.getString("CHUTHICH"), rs.getString("TINHTRANG"), rs.getString("MANV"), rs.getString("MADV") );
+
+                //Thêm vào danh sách
+                dsp.add(p);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
+        return dsp;
+    }
     public void hienThiDanhSachPhong() {
         String colTieuDe1[] = new String[]{"Mã Phòng", "Tên Phòng", "Loại Phòng", "Giá Phòng", "Chú Thích", "Tình Trạng", "Mã Nhân Viên", "Mã Dịch Vụ"};
-//        ArrayList<Phong> dsp = layDanhSachPhong();
+        ArrayList<Phong> dsp = layDanhSachPhong();
 
         DefaultTableModel model = new DefaultTableModel(colTieuDe1, 0);
 
-//        Object[] row;
-//
-//        for (int i = 0; i < dsp.size(); i++) {
-//
-//            row = new Object[8];
-//
-//            // GÁN GIÁ TRỊ
-//            row[0] = dsp.get(i).getMAPHONG();
-//            row[1] = dsp.get(i).getTENPHONG();
-//            row[2] = dsp.get(i).getLOAIPHONG();
-//            row[3] = dsp.get(i).getGIAPHONG();
-//            row[4] = dsp.get(i).getCHUTHICH();
-//            row[5] = dsp.get(i).getTINHTRANG();
-//            row[6] = dsp.get(i).getMANV();
-//            row[7] = dsp.get(i).getMADV();
-//
-//            model.addRow(row);
-//        }
+        Object[] row;
+
+        for (int i = 0; i < dsp.size(); i++) {
+
+            row = new Object[8];
+
+            // GÁN GIÁ TRỊ
+            row[0] = dsp.get(i).getMAPHONG();
+            row[1] = dsp.get(i).getTENPHONG();
+            row[2] = dsp.get(i).getLOAIPHONG();
+            row[3] = dsp.get(i).getGIAPHONG();
+            row[4] = dsp.get(i).getCHUTHICH();
+            row[5] = dsp.get(i).getTINHTRANG();
+            row[6] = dsp.get(i).getMANV();
+            row[7] = dsp.get(i).getMADV();
+
+            model.addRow(row);
+        }
         
-        //}catch(ArrayIndexOutOfBoundsException ex){
+        }catch(ArrayIndexOutOfBoundsException ex){
 
         jTablePHONG.setModel(model);
 
@@ -379,64 +379,63 @@ public class phongform extends javax.swing.JFrame {
 
     private void them3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_them3ActionPerformed
          //TODO add your handling code here
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "INSERT INTO phong(MAPHONG,TENPHONG, LOAIPHONG, GIAPHONG, CHUTHICH, TINHTRANG, MANV, MADV) VALUES('" + jTextFieldMAPHONG.getText() + "',"
-//            + "'" + jTextFieldTENPHONG.getText() + "','" + jTextFieldLOAIPHONG.getText() + "', '" + jTextFieldGIAPHONG.getText() + "', '" + jTextFieldCHUTHICHP.getText() + "', '" + jTextFieldTINHTRANG.getText() + "', '" + jTextFieldMANVP.getText() + "', '" + jTextFieldMADVP.getText() + "')";
-//
-//            st.execute(query);
-//            hienThiDanhSachPhong();
-//
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//        }
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query = "INSERT INTO phong(MAPHONG,TENPHONG, LOAIPHONG, GIAPHONG, CHUTHICH, TINHTRANG, MANV, MADV) VALUES('" + jTextFieldMAPHONG.getText() + "',"
+            + "'" + jTextFieldTENPHONG.getText() + "','" + jTextFieldLOAIPHONG.getText() + "', '" + jTextFieldGIAPHONG.getText() + "', '" + jTextFieldCHUTHICHP.getText() + "', '" + jTextFieldTINHTRANG.getText() + "', '" + jTextFieldMANVP.getText() + "', '" + jTextFieldMADVP.getText() + "')";
+
+            st.execute(query);
+            hienThiDanhSachPhong();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
     }//GEN-LAST:event_them3ActionPerformed
 
     private void sua3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sua3ActionPerformed
         // TODO add your handling code here:
-//        if (jTablePHONG.getSelectedRow()==-1) {
-//            if (jTablePHONG.getRowCount()==0) {
-//                JOptionPane.showMessageDialog(null, "Table is empty!","Error",JOptionPane.ERROR_MESSAGE);
-//            }
-//            else{
-//                JOptionPane.showMessageDialog(null, "You have to choose one item inorder to perform this action!","Error",JOptionPane.ERROR_MESSAGE);
-//            }
-//        }
-//        else{
-//            Connection con = getConnection();
-//            try {
-//                // Tạo một đối tượng để thực hiện công việc
-//                st = (Statement) con.createStatement();
-//                String query = "UPDATE phong SET TENPHONG='"+ jTextFieldTENPHONG.getText() + "',LOAIPHONG='"+ jTextFieldLOAIPHONG.getText() + "',GIAPHONG='"+ jTextFieldGIAPHONG.getText() + "',CHUTHICH='"+ jTextFieldCHUTHICHP.getText() + "',TINHTRANG='"+ jTextFieldTINHTRANG.getText() + "',MANV='"+ jTextFieldMANVP.getText() + "',MADV='"+ jTextFieldMADVP.getText() + "'" 
-//                                + "WHERE MAPHONG = '" + jTextFieldMAPHONG.getText() + "'";
-//                st.executeUpdate(query);
-//                hienThiDanhSachPhong();
-//                JOptionPane.showMessageDialog(null, "Key will not be modified","Message",JOptionPane.INFORMATION_MESSAGE);
-//            } catch (Exception ex) {
-//
-//                ex.printStackTrace();
-//            }
-//            
-//        }
+        if (jTablePHONG.getSelectedRow()==-1) {
+            if (jTablePHONG.getRowCount()==0) {
+                JOptionPane.showMessageDialog(null, "Table is empty!","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "You have to choose one item inorder to perform this action!","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            Connection con = getConnection();
+            try {
+                // Tạo một đối tượng để thực hiện công việc
+                st = (Statement) con.createStatement();
+                String query = "UPDATE phong SET TENPHONG='"+ jTextFieldTENPHONG.getText() + "',LOAIPHONG='"+ jTextFieldLOAIPHONG.getText() + "',GIAPHONG='"+ jTextFieldGIAPHONG.getText() + "',CHUTHICH='"+ jTextFieldCHUTHICHP.getText() + "',TINHTRANG='"+ jTextFieldTINHTRANG.getText() + "',MANV='"+ jTextFieldMANVP.getText() + "',MADV='"+ jTextFieldMADVP.getText() + "'" 
+                                + "WHERE MAPHONG = '" + jTextFieldMAPHONG.getText() + "'";
+                st.executeUpdate(query);
+                hienThiDanhSachPhong();
+                JOptionPane.showMessageDialog(null, "Key will not be modified","Message",JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+
+                ex.printStackTrace();
+            }
+            
+        }
     }//GEN-LAST:event_sua3ActionPerformed
 
     private void xoa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoa3ActionPerformed
         // TODO add your handling code here:
-//        Connection con = getConnection();
-//        try {
-//            // Tạo một đối tượng để thực hiện công việc
-//            st = (Statement) con.createStatement();
-//            String query = "DELETE FROM phong WHERE MAPHONG = '" + jTextFieldMAPHONG.getText() + "'";
-//            st.executeUpdate(query);
-//            hienThiDanhSachPhong();
-//
-//        } catch (Exception ex) {
-//
-//            ex.printStackTrace();
-//        }
+        Connection con = getConnection();
+        try {
+            // Tạo một đối tượng để thực hiện công việc
+            st = (Statement) con.createStatement();
+            String query = "DELETE FROM phong WHERE MAPHONG = '" + jTextFieldMAPHONG.getText() + "'";
+            st.executeUpdate(query);
+            hienThiDanhSachPhong();
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+        }
 
     }//GEN-LAST:event_xoa3ActionPerformed
 
